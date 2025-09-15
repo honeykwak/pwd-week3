@@ -236,6 +236,7 @@ npm install react-router-dom axios react-hook-form @emotion/react @emotion/style
     "vite": "^7.1.2"
   }
 }
+```
 ---
 
 ## 📁 프로젝트 구조
