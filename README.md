@@ -56,3 +56,15 @@ found 0 vulnerabilities
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
+
+// 실행해보기
+
+// 깃허브 접속 후 저장소 생성 후
+
+  git init
+  git add .
+  git commit -m "Init pwd-week3 : React + Vite app"
+  git branch -m main
+  git remote add origin https://github.com/ajou-hyunseok-oh/pwd-week3.git
+  git push -u origin main
+
