@@ -176,13 +176,6 @@ git push -u origin main
 ---
 
 ## 📦 주요 라이브러리 설치
-
-### 한 번에 모두 설치하기
-
-```bash
-npm install react-router-dom axios react-hook-form @emotion/react @emotion/styled @tanstack/react-query react-icons react-toastify react-spinners
-```
-
 ### 각 라이브러리 설명
 
 | 라이브러리 | 용도 | 버전 |
@@ -199,7 +192,7 @@ npm install react-router-dom axios react-hook-form @emotion/react @emotion/style
 ---
 
 ```json
-// package.json
+/* package.json */
 {
   "name": "pwd-week3",
   "private": true,
@@ -236,6 +229,12 @@ npm install react-router-dom axios react-hook-form @emotion/react @emotion/style
     "vite": "^7.1.2"
   }
 }
+```
+
+### 한 번에 모두 설치하기
+
+```bash
+npm install
 ```
 ---
 
@@ -285,7 +284,7 @@ pwd-week3/
 
 ## 🔧 핵심 컴포넌트 구현
 
-### 1. public/index.html 수정 (Netlify Forms)
+### 1. index.html 수정 (Netlify Forms 추가)
 
 ```html
 <!doctype html>
@@ -319,9 +318,23 @@ pwd-week3/
 
 ```
 
-### 2. src/App.jsx - 메인 앱 구조
+### 2. 메인 앱 구조
+```jsx
+/* src/main.jsx */
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
 
 ```jsx
+/* src/App.jsx */
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -394,8 +407,8 @@ function App() {
 export default App;
 ```
 
-### 3. 스타일 (src/App.css)
-- 전체 애플리케이션 (index.css)
+### 3. 스타일(CSS)
+- 전체 애플리케이션 (src/index.css)
 ```css
 body {
   margin: 0;
@@ -498,7 +511,7 @@ label {
 }
 ```
 
-- @emotion 패키지를 이용한 스타일 적용(src/styles/GlobalStyles.jsx)
+- @emotion 패키지를 이용한 전역 스타일 적용(src/styles/GlobalStyles.jsx)
 ```jsx
 /** @jsxImportSource @emotion/react */
 import { Global, css } from '@emotion/react';
@@ -624,11 +637,13 @@ export const restaurantAPI = {
 };
 
 export default api;
+```
 ---
 
 ### 5. 컴포넌트 (src/components/)
+
 ```jsx
-// src/components/Header.jsx
+/* src/components/Header.jsx */
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -698,7 +713,7 @@ export default Header;
 ```
 
 ```jsx
-// src/components/NotFound.jsx
+/* src/components/NotFound.jsx */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -753,7 +768,7 @@ export default NotFound;
 ```
 
 ```jsx
-// src/components/PopularRestaurants.jsx
+/* src/components/PopularRestaurants.jsx */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -859,8 +874,7 @@ export default PopularRestaurants;
 ```
 
 ```jsx
-// src/components/RestaurantCard.jsx
-// src/components/RestaurantCard.js
+/* src/components/RestaurantCard.jsx */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -1090,7 +1104,7 @@ export default RestaurantCard;
 ```
 
 ```jsx
-// src/components/RestaurantList.jsx
+/* src/components/RestaurantList.jsx */
 import React from 'react';
 import styled from '@emotion/styled';
 import RestaurantCard from './RestaurantCard';
@@ -1125,7 +1139,7 @@ export default RestaurantList;
 ```
 
 ```jsx
-// src/components/SubmitRestaurant.jsx
+/* src/components/SubmitRestaurant.jsx */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from '@emotion/styled';
@@ -1413,7 +1427,7 @@ export default SubmitRestaurant;
 
 ### 6. 페이지 (src/pages/)
 ```jsx
-// src/pages/DetailPage.jsx
+/* src/pages/DetailPage.jsx */
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -1529,7 +1543,7 @@ export default DetailPage;
 ```
 
 ```jsx
-// src/pages/HomePage.jsx
+/* src/pages/HomePage.jsx */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -1618,7 +1632,7 @@ export default HomePage;
 ```
 
 ```jsx
-// src/pages/ListPage.jsx
+/* src/pages/ListPage.jsx */
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import styled from '@emotion/styled';
@@ -1707,7 +1721,7 @@ export default ListPage;
 ```
 
 ```jsx
-// src/pages/PopularPage.jsx
+/* src/pages/PopularPage.jsx */
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import PopularRestaurants from '../components/PopularRestaurants';
@@ -1740,7 +1754,7 @@ export default PopularPage;
 ```
 
 ```jsx
-// src/pages/SubmitPage.jsx
+/* src/pages/SubmitPage.jsx */
 import React from 'react';
 import SubmitRestaurant from '../components/SubmitRestaurant';
 
@@ -1750,6 +1764,7 @@ function SubmitPage() {
 
 export default SubmitPage;
 ```
+---
 
 ## 📝 Netlify Forms 설정
 ### 1. 폼 요소 추가 (public/index.html)
@@ -1783,52 +1798,6 @@ export default SubmitPage;
   </body>
 </html>
 ```
-
----
-
-## 🔗 GitHub 업로드
-
-### 1. GitHub 리포지토리 생성
-
-1. [GitHub.com](https://github.com) 로그인
-2. 우측 상단 `+` → `New repository` 클릭
-3. Repository 설정:
-   - Repository name: `pwd-week3`
-   - Public 선택
-   - ❌ "Add a README file" 체크 해제
-   - `Create repository` 클릭
-
-### 2. 로컬 프로젝트와 연결
-
-```bash
-# Git 상태 확인
-git status
-
-# 모든 파일 추가
-git add .
-
-# 첫 커밋
-git commit -m "Initial commit"
-
-# GitHub 리포지토리 연결 ([username]을 본인 것으로 변경!)
-git remote add origin https://github.com/[username]/pwd-week3.git
-
-# 코드 푸시
-git push -u origin main
-```
-
-> ⚠️ 오류 발생 시:
-> ```bash
-> # branch 이름이 master인 경우
-> git branch -M main
-> git push -u origin main
-> ```
-
-### 3. 업로드 확인
-
-브라우저에서 본인의 GitHub 리포지토리 확인:
-`https://github.com/[username]/pwd-week3`
-
 ---
 
 ## 🌐 Netlify 배포
@@ -1899,23 +1868,12 @@ Deploy directory 'dist' does not exist
 <!-- 3. form name이 일치하는지 -->
 ```
 
-## ✅ 학습 체크포인트
-
-### React 핵심 개념
-
-
-### 주요 라이브러리
-
-### 배포 프로세스
-
-- React + Vite 프로젝트 환경 구축
-- [ ] Git으로 버전 관리
-- [ ] GitHub에 코드 저장
-- [ ] Netlify 자동 배포
-- [ ] Forms 데이터 수집
-
+## 💬 도움 & 질문
+- [Practical Web Service TA] (https://chatgpt.com/g/g-68bbbf3aa57081919811dd57100b1e46-ajou-digtalmedia-practical-web-service-ta)
 ---
 
+
+---
 ## 📚 추가 학습 자료
 
 ### 공식 문서
@@ -1940,10 +1898,6 @@ Deploy directory 'dist' does not exist
 - Netlify에 GitHub 저장소가 연결되어 자동 배포가 이루어 지고 있는가?
 - 맛집 정보 제출 시 Netlify 서버에 데이터가 잘 제출 되었는가?
 
-
-## 💬 도움 & 질문
-- [Practical Web Service TA] (https://chatgpt.com/g/g-68bbbf3aa57081919811dd57100b1e46-ajou-digtalmedia-practical-web-service-ta)
----
 
 ## 🎉 축하합니다!
 
