@@ -1,13 +1,44 @@
+/* === Reset & Base === */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+}
+img { max-width: 100%; display: block; }
+button { font: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* === Design Tokens === */
+:root {
+  /* colors */
+  --bg: #0f172a;
+  --surface: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #22c55e;
+  --primary-contrast: #0a0a0a;
+
+  /* radii / shadow */
+  --radius: 12px;
+  --shadow: 0 6px 16px rgba(0,0,0,.25);
+
+  /* spacing scale */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px;
+  --space-4: 16px; --space-5: 24px; --space-6: 32px;
+
+  /* font sizes */
+  --fs-sm: .875rem; --fs-base: 1rem; --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem; --fs-2xl: 2rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* === Thin Utilities (아주 최소만 전역 제공) === */
+.container { max-width: 960px; margin-inline: auto; padding: var(--space-6) var(--space-4); }
+.stack > * + * { margin-top: var(--space-3); }
+
+/* === 공용 컴포넌트 유틸 ===
+   → 학습 편의를 위해 별도 파일로 유지하고 여기서 한 번만 import */
+@import './styles/utilities.css';
