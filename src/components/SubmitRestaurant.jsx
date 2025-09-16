@@ -165,7 +165,6 @@ function SubmitRestaurant() {
       <FormTitle>🍽️ 새로운 맛집 제보하기</FormTitle>
       
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="hidden" name="form-name" value="restaurant-submit" />
         
         <FormGroup>
           <Label htmlFor="restaurantName">맛집 이름 *</Label>
